@@ -140,7 +140,7 @@ span {
 
 }
 
-.dashed::before,
+/* .dashed::before,
 .dashed::after {
     content: '';
     border: 1px solid;
@@ -149,6 +149,21 @@ span {
     transform: rotate(90deg);
     position: relative;
 
+} */
+.wordanas{
+    position: relative;
+    transition: 0.7s;
+}
+.wordanas::before{
+content: '';
+position: absolute;
+width: 60%;
+height: 3px;
+bottom: 1px;
+left: 50%;
+  transform: translate(-50%, -50%);
+background-color: #00a6ed;
+/* border: 1px solid black; */
 }
 
 .input-section {
@@ -203,7 +218,12 @@ span {
     /* border: 5px solid lime; */
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
-
+.wordHidden{
+    font-size: 0px;
+}
+.spaceLetter{
+    opacity: 0;
+}
 /* Media Query Screen */
 
 @media screen and (max-width: 780px) {
