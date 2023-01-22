@@ -5,6 +5,7 @@ let dataOfWords=JSON.parse(sessionStorage.getItem("wordData")) || fetchData();
 var currentWord;
 var worlength;
 var score=0;
+var currentwordRef;
 var is=true;
 var totalLives=6;
 var lives=totalLives;
@@ -34,7 +35,7 @@ function displayButton(){
             let char=item.innerHTML.toLowerCase();
            
 
-            if(is && this.dataset.id!=-1){
+            if(is && this.dataset.id!=-1 && lives>0){
                 this.dataset.id=-1;
                 let  present=false;
                 for(let i=0;i<currentWord.length;i++){
@@ -75,9 +76,10 @@ function displayButton(){
                     this.classList.add("redDisabled");
                     this.classList.add("disabled");
                     lives--;
-                    console.log(lives)
+                    // console.log(lives)
                     displayLives()
                     if(lives==0){
+                        alert(`Your score is ${score} and the word ${currentwordRef}`)
                         score=0;
                         console.log("Game Over");
                         setTimeout(()=>{
@@ -121,6 +123,7 @@ function appendWord(){
     categoryText.innerHTML=cat.split("_").join(" ");
     input_section.innerHTML="";
     currentWord=word.toLowerCase();
+    currentwordRef=currentWord;
     worlength=word.split(" ").join("").length;
     console.log(currentWord)
     wordarr.forEach((item,i)=>{
@@ -147,6 +150,7 @@ function onLoad(){
 
 //displau lives
 function displayLives(){
+    // console.log(lives)
     let livesText=document.querySelector("#livesText");
     let n=totalLives;
     livesText.innerHTML="";
