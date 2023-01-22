@@ -1,6 +1,18 @@
+let scoreText=document.querySelector("#scoreText");
+
+
 let dataOfWords=JSON.parse(sessionStorage.getItem("wordData")) || fetchData();
 var currentWord;
 var worlength;
+var score=0;
+var is=true;
+var totalLives=6;
+var lives=totalLives;
+
+
+// HighScore from localStorage
+let highScore=Number(localStorage.getItem("GuessItHighScore")) || 0;
+
 //onload function
 onLoad()
 
@@ -20,20 +32,62 @@ function displayButton(){
     btn.forEach((item)=>{
         item.addEventListener("click",function(){
             let char=item.innerHTML.toLowerCase();
-            for(let i=0;i<currentWord.length;i++){
-                if(char==currentWord[i]){
-                    currentWord.subarr
-                    let wordDiv=document.getElementById(`word${i}`);
-                    wordDiv.classList.remove("wordHidden")
-                    worlength--;
+           
+
+            if(is && this.dataset.id!=-1){
+                this.dataset.id=-1;
+                let  present=false;
+                for(let i=0;i<currentWord.length;i++){
+                    if(char==currentWord[i]){
+                        present=true;
+                        currentWord.subarr
+                        let wordDiv=document.getElementById(`word${i}`);
+                        wordDiv.classList.remove("wordHidden")
+                        // currentWord[i]=-1;
+                        let arr=currentWord.split("");
+                        arr[i]=0;
+                        currentWord=arr.join("");
+                        // console.log(currentWord)
+                        worlength--;
+                    }
+                    if(worlength<=0){
+                        is=false;
+                        score++;
+                        if(score>highScore){
+                            localStorage.setItem("GuessItHighScore",score);
+                            console.log("New High-Score is "+score)
+                        }
+                        setTimeout(()=>{
+                            onLoad()
+                        },1000)
+                        break;
+                    }
+                    
                 }
-                if(worlength<=0){
-                    setTimeout(()=>{
-                        onLoad()
-                    },1000)
+                if(present){
+                    //green colored disabled button
+                    this.classList.remove("alphabet-buttons");
+                    this.classList.add("greenDisabled");
+                    this.classList.add("disabled");
+                }else{
+                    //red coloured disabled button
+                    this.classList.remove("alphabet-buttons");
+                    this.classList.add("redDisabled");
+                    this.classList.add("disabled");
+                    lives--;
+                    console.log(lives)
+                    displayLives()
+                    if(lives==0){
+                        score=0;
+                        console.log("Game Over");
+                        setTimeout(()=>{
+                            onLoad()
+                        },2000)
+                    }
                     
                 }
             }
+            
         })
     })
     
@@ -59,6 +113,7 @@ function getWord(){
 //appends word on the dom
 
 function appendWord(){
+    scoreText.innerHTML=score;
     let [word,cat]=getWord();
     let wordarr=word.split("");
     let input_section=document.querySelector(".input-section");
@@ -68,7 +123,6 @@ function appendWord(){
     currentWord=word.toLowerCase();
     worlength=word.split(" ").join("").length;
     console.log(currentWord)
-    console.log(worlength)
     wordarr.forEach((item,i)=>{
         if(item!=" "){
             input_section.innerHTML+=`<div class="wordanas">
@@ -84,7 +138,23 @@ function appendWord(){
 
 }
 function onLoad(){
+    lives=totalLives;
+    displayLives()
+    is=true;
     appendWord()
     displayButton();
+}
+
+//displau lives
+function displayLives(){
+    let livesText=document.querySelector("#livesText");
+    let n=totalLives;
+    livesText.innerHTML="";
+    for(let i=0;i<n-lives;i++){
+        livesText.innerHTML+=`<i class="fa-regular fa-heart"></i>`;
+    }
+    for(let i=0;i<lives;i++){
+        livesText.innerHTML+=`<i class="fa-solid fa-heart"></i>`;
+    }
 }
 

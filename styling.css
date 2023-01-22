@@ -80,7 +80,30 @@ span {
     box-shadow: inset 2px 5px 5px #c1c0c0,
         inset -5px -9px 3px #756a6a00;
 }
-
+/* disabled button styling */
+.greenDisabled{
+    cursor: not-allowed;
+    background-color: rgb(214, 255, 160);
+    border: 5px solid rgb(255, 255, 255);
+    
+}
+.redDisabled{
+    cursor: not-allowed;
+    background-color: rgb(250, 93, 93);
+    border: 5px solid rgb(255, 255, 255);
+    
+}
+.disabled{
+    font-size: 1rem;
+    color: rgb(92, 92, 92);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    margin: 0.1rem 0.1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transform: translate(1) translate(0, 0);
+    transition: transform 225ms, box-shadow 225ms;
+}
 .categories-section {
     /* border: 1px solid black; */
     padding: 0.2em;
