@@ -28,18 +28,17 @@ header {
 
 }
 
-header>button {
-    float: right;
-    border: 1px solid red;
-}
-
 .logo {
-    border: 1px solid black;
+    border: 1px solid #00a6ed;
     display: inline;
     padding: 0.5rem;
     width: 20%;
     border-radius: 5px;
-    background: #faf8f881;
+    /* background: #faf8f881; */
+    background: #fff;
+    box-shadow: inset 2px 5px 5px #00a6ed,
+        inset -5px -9px 3px #756a6a00;
+    text-shadow: 0.1px 1px #00a6ed;
 }
 
 .body-container {
@@ -67,21 +66,23 @@ span {
     padding: 0.2em;
     width: 25%;
     border-radius: 5px;
-    color: #00a6ed;
-    text-shadow: 1px 0.1px #000000;
+    color: #000000;
+    text-shadow: 1px 0.1px #00a6ed;
 }
 
 .score-board>h2 {
     border-radius: 4px;
-    background: #e0e0e038;
-    box-shadow: inset 2px 5px 5px #c1c0c0,
+    background: #fff;
+    box-shadow: inset 2px 5px 5px #00a6ed,
         inset -5px -9px 3px #756a6a00;
-   
+    text-shadow: 0.1px 1px #00a6ed;
+    padding-left: 0.3em;
+
 }
 
 .categories-section {
     /* border: 1px solid black; */
-    padding-top: 0;
+    /* padding-top: 0; */
     padding: 0.2em;
     border: 1px solid rgb(0, 0, 0);
     /* height: 50px; */
@@ -94,41 +95,40 @@ span {
 }
 
 #categoryText {
-    padding: 0.1em 0.4em 0.9em 0.5em;
-    height: 1.5rem;
+    padding: 0.2em;
     border-radius: 5px;
     background: #fff;
     box-shadow: inset 2px 5px 5px #00a6ed,
         inset -5px -9px 3px #756a6a00;
-    text-shadow: 0.1px 1px #000000;
-
-
+    text-shadow: 0.1px 1px #00a6ed;
+    font-size: larger;
+    color: #000000;
 }
 
 .lives-section {
-    width: 25%;
-    /* height: 50px; */
     padding: 0.2em;
     border: 1px solid rgb(0, 0, 0);
     border-radius: 5px;
     text-align: end;
     color: #00a6ed;
-    text-shadow: 1px 0.1px #000000;
-
+    text-shadow: 0.1px 1px #000000;
 }
 
 .fa-regular,
 .fa-solid {
     color: red;
     margin: 1px;
+
 }
 
 .lives-section>div {
     border-radius: 5px;
-    background: #e0e0e038;
-    box-shadow: inset 2px 5px 5px #c1c0c0,
-        inset -5px -9px 3px #756a6a00;
+    text-shadow: 1px 0.1px #000000;
+    background-color: #fff;
+    box-shadow: inset 2px 5px 5px #00a6ed,
+        inset -5px -9px 3px #ffffff;
     padding: 0.2em;
+    font-size: larger;
 
 }
 
@@ -146,8 +146,8 @@ span {
     text-align: center;
     margin: 0.2em;
     border: 5px solid #00a6ed;
-    text-shadow: 2px 1px #000000;
-    color: #00a6ed;
+    text-shadow: 2px 1px #00a6ed;
+    color: #000000;
     background-color: rgb(255, 255, 255);
     transform: scale(1.05) translate(0, -0.15rem);
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.35);
@@ -210,7 +210,7 @@ span {
 .word-typing-section {
     padding: 0.5em;
     margin-top: 1rem;
-    /* border: 3px solid rgb(220, 0, 0); */
+    border: 1px solid #00a6ed;
     position: relative;
     background-image: url("https: //images.pexels.com/photos/5908695/pexels-photo-5908695.jpeg?auto=compress&cs=tinysrgb&w=600");
     text-align: center;
@@ -275,7 +275,7 @@ span {
 @media screen and (max-width: 550px) {
 
     .logo {
-        border: 0.5px solid rgb(0, 0, 0);
+        border: 0.5px solid #00a6ed;
         height: 100%;
         width: 100%;
         margin-top: 0;
@@ -285,8 +285,8 @@ span {
 
     .categories-section {
         height: 50px;
-        font-size: x-small;
-        padding: 0.1rem;
+        font-size: small;
+        /* padding: 1rem; */
         width: 100%;
         margin: 0 1em 1em;
     }
@@ -295,31 +295,36 @@ span {
         /* border: 2px solid red; */
         height: 60%;
         width: 100%;
+        padding: 0;
+        /* font-size: large; */
     }
 
     .score-board {
         height: 50px;
         width: 100%;
-        font-size: small;
+        /* font-size: larger; */
     }
 
     #scoreText {
         height: 55%;
         width: 100%;
-        font-size: medium;
+        font-size: larger;
     }
 
     .lives-section {
         font-size: smaller;
         height: 50px;
         width: 100%;
-        padding: 0;
+        /* margin: 1em; */
+        /* padding: 0; */
     }
 
     .fa-regular,
     .fa-solid {
         /* color:black; */
         font-size: smaller;
+        /* padding: 0; */
+        /* width: 150%; */
     }
 
 
@@ -328,7 +333,7 @@ span {
 @media screen and (max-width: 320px) {
 
     .logo {
-        border: 0.5px solid rgb(0, 0, 0);
+        border: 1px solid #00a6ed;
         height: 100%;
         width: 100%;
         margin-top: 0;
@@ -338,33 +343,33 @@ span {
 
     .categories-section {
         height: 50px;
-        font-size: x-small;
+
         width: 100%;
         margin: 0 1em 1em;
+        /* padding: 15px; */
+    }
+
+    #categoryText {
+        margin: 2px;
+        padding: 2px;
+        font-size: large;
     }
 
     .score-board {
         height: 50px;
         width: 100%;
-        font-size: small;
 
     }
 
     #scoreText {
-        border: 3px solid red;
         height: 55%;
         width: 100%;
-        font-size: small;
-    }
-
-    .lives-section {
-        padding-left: 0;
-        font-size: small;
+        font-size: larger;
     }
 
     .fa-regular,
     .fa-solid {
-
-        font-size: xx-small;
+        /* padding: 0.9px; */
+        font-size: x-small;
     }
 }
