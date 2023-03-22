@@ -91,6 +91,7 @@ function displayButton() {
 
 //function to get the data from the database
  async function fetchData() {
+ try{
     let baseUrl = "https://63be9d23f5cfc0949b5c0e32.mockapi.io/AllWords/";
     let data = await fetch(baseUrl)
     let res = await data.json();
@@ -100,7 +101,10 @@ function displayButton() {
     }
    
     sessionStorage.setItem("wordData", JSON.stringify(res));
-    return res;
+    return res;}catch(err){
+        console.log(err+" yes its an error");
+        fetchData()
+    }
 
 }
 function getWord() {
