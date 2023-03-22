@@ -1,7 +1,7 @@
 let scoreText = document.querySelector("#scoreText");
 
 
-let dataOfWords = JSON.parse(sessionStorage.getItem("wordData")) || fetchData();
+let dataOfWords =  JSON.parse(sessionStorage.getItem("wordData")) || fetchData();
 var currentWord;
 var worlength;
 var score = 0;
@@ -90,14 +90,15 @@ function displayButton() {
 }
 
 //function to get the data from the database
- function fetchData() {
+ async function fetchData() {
     let baseUrl = "https://63be9d23f5cfc0949b5c0e32.mockapi.io/AllWords/";
-     let data;
-     let res;
-    try{data=  fetch(baseUrl)}.then{ res = await data.json()}catch(err){fetchData()}
-    
-    
-    // console.log(1)
+    let data = await fetch(baseUrl)
+    let res = await data.json();
+    if(data.status==200){
+        dataOfWords=res;
+        onLoad();
+    }
+   
     sessionStorage.setItem("wordData", JSON.stringify(res));
     return res;
 
